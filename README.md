@@ -7,6 +7,8 @@ lihat adalah konsep, logic, kerapian dan pemahaman
 *. Sertakan Readme untuk soal aplikasi.
 *. Jika ada pertanyaan, silakan reply all email dari mcpayment
 *. Gunakan penamaan variable yang baik dan benar, ikuti konsep SOLID adalah nilai plus
+
+
 1. logic
 A. Two Sums
 Given an array of integers nums and an integer target, return indices of the two numbers
@@ -23,6 +25,8 @@ Output: [1,2]
 Example 3:
 Input: nums = [3,3], target = 6
 Output: [0,1]
+
+
 2. Budget Application
 We need to have a web app that can help us track our income, expenses and the balance,
 and all the data is stored / fetched via REST API to backend server.
