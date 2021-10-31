@@ -1,0 +1,185 @@
+1. Menampilkan balance dengan status income 
+select user.Name, UBH.Tgl_Transaksi , UBH.Status, UBH.Nominal ,UB.Balance AS Saldo_sebelumnya , UBH.Nominal, CAST(UB.Balance + UBH.Nominal AS SIGNED) AS Saldo_sekarang
+from user_balance UB , user_balance_history UBH , user
+where user.ID = UB.ID_User AND user.ID = UBH.ID_user;
+
+2. Menampilkan balance dengan status outcome
+select user.Name, UBH.Tgl_Transaksi , UBH.Status, UBH.Nominal ,UB.Balance AS Saldo_sebelumnya , UBH.Nominal, CAST(UB.Balance - UBH.Nominal AS SIGNED) AS Saldo_sekarang
+from user_balance UB , user_balance_history UBH , user
+where user.ID = UB.ID_User AND user.ID = UBH.ID_user;
+
+3. tes query update total balance
+INSERT INTO user_balance_history 
+                    VALUES
+                    (NULL,1,'Income','700','2021-10-13');
+UPDATE user_balance SET `user_balance`.`Balance` =  IF(user_balance_history.Status = 'Income', user_balance.Balance + user_balance_history.Nominal, user_balance.Balance = user_balance.Balance) OR IF(user_balance_history.Status= 'Income', user_balance.Balance - user_balance_history.Nominal, user_balance.Balance = user_balance.Balance);
+
+SELECT user_balance.Balance FROM user_balance,user_balance_history,user
+
+WHERE user_balance_history.ID_user = user_balance.ID_User AND user.ID=user_balance.ID_User
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- menu -->
+    <!-- <div class="sidebar">
+        <div class="sidebar-container">
+            <div class="brand">
+                <h2>
+                <span class="las la-wallet"></span>
+                E-Wallet</h2>
+            </div>
+
+            <div class="sidebar-avatar">
+                <div>
+                   gambar diinput oleh user 
+                pake if , klo ada gambar dari databse pake gambar tu aja klo gak pak egambar dibawah
+                -->
+    <!--   <img src="img/userr.png" >
+                </div>
+                <div class="avatar-info"></div>
+                    <div class="avatar-text">
+                        <h4>Nama dari Database</h4>
+                        <small>username dari database</small>
+                    </div>
+                    <span class="las la-angle-down"></span>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="">
+                            <span class="las la-user"></span>
+                            <span>Profil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="las la-sign-out-alt"></span>
+                            <span>Sign Out</span>
+                        </a>
+                    </li> 
+                </ul>
+            </div>            
+        </div>
+    </div> -->
+
+    <!-- content isi dalam -->
+    #menu-toggle{
+    display:  none;
+}
+
+
+
+.sidebar{
+    width: 345px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 1rem 1.2rem;
+    
+}
+
+.sidebar-container{
+    height: 100%;
+    width: 100%;
+    background-color: #1e2029;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 1.2rem;
+}
+
+.brand h2{
+    color: var(--color-main);
+}
+
+
+.btn-main{
+    padding: .5rem  1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-main);
+    color: var(--main-text);
+    display: block;    
+}
+
+.brand h2 span{
+    
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-right: .5rem;
+}
+
+.sidebar-avatar{
+    display: flex;
+    grid-template-columns: 150px auto;
+    align-items:  center;
+    border: 2px solid var(--main-accent);
+    padding: .1rem .7rem;
+    border-radius: 7px;
+    margin: 1.5rem 0rem;
+    
+}
+
+.avatar-info{
+    margin-left: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.sidebar-menu li {
+    margin-bottom: .4rem;
+}
+
+.sidebar-menu a{
+    color: var(--main-text);
+    display: block;
+    padding: .7rem 0rem;
+}
+
+.sidebar-menu a.active{
+    background-color: rgba(203, 105, 195, 0.2);
+    padding: .8rem;
+    border-radius: 7px;
+}
+
+.sidebar-menu a span    {
+    display:  inline-block;
+    margin-right: .8rem;
+    font-size: 1.2rem;
+    color: var(--color-main);
+} */
